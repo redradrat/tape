@@ -37,6 +37,9 @@ func initConfig() {
 		// Search config in ".config/tape".
 		viper.AddConfigPath(home + "/.config/tape")
 		viper.SetConfigName("config")
+		if err = viper.ReadInConfig(); err != nil {
+			panic(fmt.Errorf("Could not parse config"))
+		}
 	}
 
 	if err := viper.ReadInConfig(); err != nil {
